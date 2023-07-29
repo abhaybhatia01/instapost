@@ -8,19 +8,13 @@ app.get('/', (req, res) => {
   });
 
 app.get('/meta', (req, res) => {
-    fetch("https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media&response_type=code")
-    .then(response => response.json())
-    .then(data => {
-    console.log(data);
-    })
-    .catch(error => {
-    console.error(error);
-    });
+    res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media&response_type=code">insta auth</a>')
 });
 
 app.get('/meta/auth', (req, res) => {
     const {code} = req.query;
     const correctCode = code.split("#")[0]
+    console.log(correctCode)
     fetch('https://api.example.com/datahttps://api.instagram.com/oauth/access_token', {
         method: 'POST',
         body: JSON.stringify({
