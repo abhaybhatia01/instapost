@@ -8,6 +8,17 @@ const app = express();
 
 app.get('/', (req, res) => {res.send('Hello World!');});
 
+
+app.get('/meta',async (req, res) => {
+    const response = await get({
+        url: "https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media&response_type=code"
+    });
+    console.log(response)
+});
+app.get('/meta/auth',async (req, res) => {
+    res.send(res)
+});
+
 app.get('/post',async (req,res) => {
     const ig = new IgApiClient();
     ig.state.generateDevice(process.env.IG_USERNAME);
