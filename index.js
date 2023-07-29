@@ -18,7 +18,7 @@ app.get('/meta', (req, res) => {
     });
 });
 
-app.get('/meta/auth:code', (req, res) => {
+app.get('/meta/auth', (req, res) => {
     const {code} = req.query;
     fetch('https://api.example.com/datahttps://api.instagram.com/oauth/access_token', {
         method: 'POST',
