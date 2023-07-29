@@ -24,11 +24,11 @@ const postToInsta = async () => {
 
 }
 
-const cronInsta = new CronJob("30 5 * * *", async () => {
-    // postToInsta();
-});
+// const cronInsta = new CronJob("30 5 * * *", async () => {
+//     // postToInsta();
+// });
 
-cronInsta.start();
+// cronInsta.start();
 // postToInsta();
 
 app.get('/', (req, res) => {
@@ -43,3 +43,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+
+
+module.exports = app;
