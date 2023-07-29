@@ -20,6 +20,7 @@ app.get('/meta', (req, res) => {
 
 app.get('/meta/auth', (req, res) => {
     const {code} = req.query;
+    const correctCode = code.split("#")[0]
     fetch('https://api.example.com/datahttps://api.instagram.com/oauth/access_token', {
         method: 'POST',
         body: JSON.stringify({
@@ -27,7 +28,7 @@ app.get('/meta/auth', (req, res) => {
             client_secret: '48a9a0f67bc6a07fda26f99838a262df',
             grant_type: 'authorization_code',
             redirect_uri: 'https://instapost-beta.vercel.app/meta/auth',
-            code: code,
+            code: correctCode,
         })
     })
     .then(response => response.json())
