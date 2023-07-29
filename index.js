@@ -6,37 +6,23 @@ const CronJob = require("cron").CronJob;
 const express = require('express');
 const app = express();
 
+app.get('/', (req, res) => {res.send('Hello World!');});
 
-const postToInsta = async () => {
+app.get('/post',async (req,res) => {
     const ig = new IgApiClient();
     ig.state.generateDevice(process.env.IG_USERNAME);
     await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
-
     const imageBuffer = await get({
         url: 'https://i.imgur.com/BZBHsauh.jpg',
         encoding: null, 
     });
+    //posting to insta
     await ig.publish.photo({
         file: imageBuffer,
         caption: 'Really nice photo from the internet!', // nice caption (optional)
     });
-    console.log('published')
-
-}
-
-// const cronInsta = new CronJob("30 5 * * *", async () => {
-//     // postToInsta();
-// });
-
-// cronInsta.start();
-// postToInsta();
-
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-  });
-
-
-
+    res.send('published')
+});
 
 
 const PORT = process.env.PORT || 3000;
