@@ -22,7 +22,7 @@ app.get('/meta/auth', async (req, res) => {
             client_secret: '48a9a0f67bc6a07fda26f99838a262df',
             grant_type: 'authorization_code',
             redirect_uri: 'https://instapost-beta.vercel.app/meta/auth',
-            code: correctCode
+            code: correctCode,
         })
     })
     .then(response => response.json())
