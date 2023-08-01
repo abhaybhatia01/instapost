@@ -16,15 +16,25 @@ app.get('/meta/auth', async (req, res) => {
     const {code} = req.query;
     const correctCode = code.split("#")[0]
     console.log(correctCode)
-    fetch('https://api.instagram.com/oauth/access_token', {
+
+    const headers = {        
+        // "Authorization": INO_AUTHORIZATION_CODE,
+        // "Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"
+        "Content-Type": "application/json"
+      }      
+      const url = `https://api.instagram.com/oauth/access_token`;
+      const body = {
+        'client_id': '160358547066273',
+        'client_secret': '48a9a0f67bc6a07fda26f99838a262df',
+        'grant_type': 'authorization_code',
+        'redirect_uri': 'https://instapost-beta.vercel.app/meta/auth',
+        'code': correctCode
+      }
+
+    fetch('url', {
         method: 'POST',
-        body: JSON.stringify({
-            'client_id': '160358547066273',
-            'client_secret': '48a9a0f67bc6a07fda26f99838a262df',
-            'grant_type': 'authorization_code',
-            'redirect_uri': 'https://instapost-beta.vercel.app/meta/auth',
-            'code': correctCode
-        })
+        body: JSON.stringify(body),
+        headers:headers
     })
     .then(response => response.json())
     .then(data => {
