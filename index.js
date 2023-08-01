@@ -1,8 +1,9 @@
 const express = require('express');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const app = express();
+const bodyParser = require('body-parser');
 
-
+app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res.send('Hello, World!');
   });
@@ -18,7 +19,7 @@ app.get('/meta/auth', async (req, res) => {
     await fetch('https://api.instagram.com/oauth/access_token', {
         method: 'POST',
         body: JSON.stringify({
-            client_id: '160358547066273',
+            client_id: 160358547066273,
             client_secret: '48a9a0f67bc6a07fda26f99838a262df',
             grant_type: 'authorization_code',
             redirect_uri: 'https://instapost-beta.vercel.app/meta/auth',
