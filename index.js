@@ -19,8 +19,8 @@ app.get('/meta/auth', async (req, res) => {
 
     const headers = {        
         // "Authorization": INO_AUTHORIZATION_CODE,
-        // "Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"
-        "Content-Type": "application/json"
+        "Content-Type": "multipart/form-data; boundary=<calculated when request is sent>"
+        // "Content-Type": "application/json"
       }      
       const url = `https://api.instagram.com/oauth/access_token`;
       const body = {
@@ -39,7 +39,7 @@ app.get('/meta/auth', async (req, res) => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        res.send(data)
+        res.send(data,body,)
     })
     .catch(error => {
         res.send(error)
