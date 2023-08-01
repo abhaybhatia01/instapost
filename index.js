@@ -31,7 +31,7 @@ app.get('/meta/auth', async (req, res) => {
         'code': correctCode
       }
 
-    fetch('url', {
+    fetch(url, {
         method: 'POST',
         body: JSON.stringify(body),
         headers:headers
