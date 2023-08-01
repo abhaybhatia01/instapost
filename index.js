@@ -39,7 +39,7 @@ app.get('/meta/auth', async (req, res) => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        res.send(data,body,)
+        res.send({data,body,headers})
     })
     .catch(error => {
         res.send(error)
