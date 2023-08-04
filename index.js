@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 app.get('/meta', (req, res) => {
     // res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media&response_type=code">insta auth</a>')
-    res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=2196622537188803&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media,ads_management,business_management,instagram_basic,instagram_content_publish,pages_read_engagement&response_type=code">insta auth</a>')
+    res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media,ads_management,business_management,instagram_basic,instagram_content_publish,pages_read_engagement&response_type=code">insta auth</a>')
 });
 
 app.get('/meta/auth', async (req, res) => {
@@ -32,8 +32,8 @@ try{
 	// 	url: 'https://api.instagram.com/oauth/access_token',
 	// 	method: 'POST',
 	// 	form: {
-    //         'client_id': '2196622537188803',
-    //         'client_secret': '25ecebc5bb19eb7e8c3252856900de1f',
+    //         'client_id': '160358547066273',
+    //         'client_secret': '48a9a0f67bc6a07fda26f99838a262df',
     //         'grant_type': 'authorization_code',
     //         'redirect_uri': 'https://instapost-beta.vercel.app/meta/auth',
     //         'code': correctCode
