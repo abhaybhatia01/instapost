@@ -24,28 +24,28 @@ try{
     const correctCode = code.split("#")[0]
     console.log(correctCode)
     if(req.query.action=="getCode"){
-        return res.send(correctCode)
     }
+    return res.send(correctCode)
 
-    let options = {
-		url: 'https://api.instagram.com/oauth/access_token',
-		method: 'POST',
-		form: {
-            'client_id': '2196622537188803',
-            'client_secret': '25ecebc5bb19eb7e8c3252856900de1f',
-            'grant_type': 'authorization_code',
-            'redirect_uri': 'https://instapost-beta.vercel.app/meta/auth',
-            'code': correctCode
-		}
-	};
+    // let options = {
+	// 	url: 'https://api.instagram.com/oauth/access_token',
+	// 	method: 'POST',
+	// 	form: {
+    //         'client_id': '2196622537188803',
+    //         'client_secret': '25ecebc5bb19eb7e8c3252856900de1f',
+    //         'grant_type': 'authorization_code',
+    //         'redirect_uri': 'https://instapost-beta.vercel.app/meta/auth',
+    //         'code': correctCode
+	// 	}
+	// };
     
-    httpRequest(options, function (error, response, body) {
-		if (!error && response.statusCode == 200) {
-			let user = JSON.parse(body);
-			console.log(user)
-            res.send(user)
-		}
-	});
+    // httpRequest(options, function (error, response, body) {
+	// 	if (!error && response.statusCode == 200) {
+	// 		let user = JSON.parse(body);
+	// 		console.log(user)
+    //         res.send(user)
+	// 	}
+	// });
 }catch(err){
     console.log(err)
     res.send({
