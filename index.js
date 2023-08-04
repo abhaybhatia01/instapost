@@ -12,7 +12,8 @@ app.get('/', (req, res) => {
 
 app.get('/meta', (req, res) => {
     // res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media&response_type=code">insta auth</a>')
-    res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media,ads_management,business_management,instagram_basic,instagram_content_publish,pages_read_engagement&response_type=code">insta auth</a>')
+    // res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media,ads_management,business_management,instagram_basic,instagram_content_publish,pages_read_engagement&response_type=code">insta auth</a>')
+    res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media,pages_show_list,ads_management,business_management,instagram_basic,instagram_content_publish,pages_read_engagement,instagram_manage_comments,pages_read_user_content,pages_manage_posts,pages_manage_metadata&response_type=code">insta auth</a>')
 });
 
 app.get('/meta/auth', async (req, res) => {
