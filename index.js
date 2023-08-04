@@ -16,6 +16,9 @@ app.get('/meta', (req, res) => {
 });
 
 app.get('/meta/auth', async (req, res) => {
+    if(req.query.error){
+        return res.send(req.query.error)
+    }
     const {code} = req.query;
     const correctCode = code.split("#")[0]
     console.log(correctCode)
