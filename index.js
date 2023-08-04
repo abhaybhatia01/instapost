@@ -12,36 +12,33 @@ app.get('/', (req, res) => {
 
 app.get('/meta', (req, res) => {
     // res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media&response_type=code">insta auth</a>')
-    res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=160358547066273&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media&response_type=code">insta auth</a>')
+    res.send('<a href="https://api.instagram.com/oauth/authorize?client_id=2196622537188803&redirect_uri=https://instapost-beta.vercel.app/meta/auth&scope=user_profile,user_media,ads_management,business_management,instagram_basic,instagram_content_publish,pages_read_engagement&response_type=code">insta auth</a>')
 });
 
 app.get('/meta/auth', async (req, res) => {
     const {code} = req.query;
     const correctCode = code.split("#")[0]
     console.log(correctCode)
-    res.send(`code: ${correctCode}`)
 
-    // let options = {
-	// 	url: 'https://api.instagram.com/oauth/access_token',
-	// 	method: 'POST',
-	// 	form: {
-    //         'client_id': '160358547066273',
-    //         'client_secret': '48a9a0f67bc6a07fda26f99838a262df',
-    //         // 'client_id': '2196622537188803',
-    //         // 'client_secret': 'f9cc993d34e704c838d5cacad567c540',
-    //         'grant_type': 'authorization_code',
-    //         'redirect_uri': 'https://instapost-beta.vercel.app/meta/auth',
-    //         'code': correctCode
-	// 	}
-	// };
+    let options = {
+		url: 'https://api.instagram.com/oauth/access_token',
+		method: 'POST',
+		form: {
+            'client_id': '2196622537188803',
+            'client_secret': '25ecebc5bb19eb7e8c3252856900de1f',
+            'grant_type': 'authorization_code',
+            'redirect_uri': 'https://instapost-beta.vercel.app/meta/auth',
+            'code': correctCode
+		}
+	};
     
-    // httpRequest(options, function (error, response, body) {
-	// 	if (!error && response.statusCode == 200) {
-	// 		let user = JSON.parse(body);
-	// 		console.log(user)
-    //         res.send(user)
-	// 	}
-	// });
+    httpRequest(options, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			let user = JSON.parse(body);
+			console.log(user)
+            res.send(user)
+		}
+	});
 
 
     
