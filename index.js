@@ -22,6 +22,9 @@ app.get('/meta/auth', async (req, res) => {
     const {code} = req.query;
     const correctCode = code.split("#")[0]
     console.log(correctCode)
+    if(req.query.action=="getCode"){
+        return res.send(correctCode)
+    }
 
     let options = {
 		url: 'https://api.instagram.com/oauth/access_token',
