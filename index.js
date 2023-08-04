@@ -18,6 +18,7 @@ app.get('/meta', (req, res) => {
 app.get('/meta/auth', async (req, res) => {
 try{
     if(req.query.error){
+        console.log(req.query.error)
         return res.send(req.query.error)
     }
     const {code} = req.query;
