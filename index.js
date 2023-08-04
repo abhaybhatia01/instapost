@@ -16,6 +16,7 @@ app.get('/meta', (req, res) => {
 });
 
 app.get('/meta/auth', async (req, res) => {
+try{
     if(req.query.error){
         return res.send(req.query.error)
     }
@@ -45,6 +46,13 @@ app.get('/meta/auth', async (req, res) => {
             res.send(user)
 		}
 	});
+}catch(err){
+    console.log(err)
+    res.send({
+        status:500,
+        error:err
+    })
+}
 
 
     
